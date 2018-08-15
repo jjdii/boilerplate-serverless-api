@@ -39,7 +39,7 @@ DB_USER: '[USERNAME]'
 DB_PASS: '[PASSWORD]'
 DB_NAME: '[DATABASE]'
 ```
-- Example serverless.env.yml file:
+Example serverless.env.yml file:
 ```
 AWS_ROLE: arn:aws:iam::103938583682:role/aws_lambda_executor
 
