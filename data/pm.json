@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "de87c260-cfde-4788-a18c-3b08dd1edec3",
+		"name": "Boilerplate Express API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Resource",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"tester\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:6660/resources?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6660",
+					"path": [
+						"resources"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Resource",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"tester\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:6660/resources?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6660",
+							"path": [
+								"resources"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "182",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Aug 2018 05:55:28 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b6-uSbM+med+nvxg1O1a0mLQaw+c5g\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"create resources success\",\"id\":16,\"data\":{\"fieldCount\":0,\"affectedRows\":1,\"insertId\":16,\"serverStatus\":2,\"warningCount\":0,\"message\":\"\",\"protocol41\":true,\"changedRows\":0}}"
+				}
+			]
+		},
+		{
+			"name": "Get Resource By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:6660/resources/16?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6660",
+					"path": [
+						"resources",
+						"16"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Resource By ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:6660/resources/16?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6660",
+							"path": [
+								"resources",
+								"16"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "151",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Aug 2018 05:55:37 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"97-6CEgBSPec9qqXQDPRz6pthJ1+Ig\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"get resources success\",\"id\":\"16\",\"data\":{\"id\":16,\"name\":\"tester\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T09:55:30.000Z\"}}"
+				}
+			]
+		},
+		{
+			"name": "List Resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:6660/resources?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6660",
+					"path": [
+						"resources"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Resources",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:6660/resources?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6660",
+							"path": [
+								"resources"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1499",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Aug 2018 05:55:43 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5db-zyqRxUR+bFwdQcOf+SE81o/eJWM\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"list resources success\",\"data\":[{\"id\":1,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:36:10.000Z\"},{\"id\":2,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:38:29.000Z\"},{\"id\":3,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:38:39.000Z\"},{\"id\":4,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:38:43.000Z\"},{\"id\":5,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:39:01.000Z\"},{\"id\":6,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:39:34.000Z\"},{\"id\":7,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:39:59.000Z\"},{\"id\":8,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:40:04.000Z\"},{\"id\":9,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:44:19.000Z\"},{\"id\":10,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:44:24.000Z\"},{\"id\":11,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:46:39.000Z\"},{\"id\":12,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:52:12.000Z\"},{\"id\":13,\"name\":\"test\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T07:56:40.000Z\"},{\"id\":14,\"name\":\"testy\",\"description\":\"this is actually a drill\",\"created\":\"2018-08-14T07:57:03.000Z\"},{\"id\":16,\"name\":\"tester\",\"description\":\"this is not a drill\",\"created\":\"2018-08-14T09:55:30.000Z\"}]}"
+				}
+			]
+		},
+		{
+			"name": "Update Resource",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"testy\",\n\t\"description\": \"this is actually a drill\",\n\t\"test\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:6660/resources/16?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6660",
+					"path": [
+						"resources",
+						"16"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Resource",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"testy\",\n\t\"description\": \"this is actually a drill\",\n\t\"test\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:6660/resources/16?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6660",
+							"path": [
+								"resources",
+								"16"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "224",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Aug 2018 05:55:52 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e0-vjLpCzx61NEENMnxhQwtu+gvU+E\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"update resources success\",\"id\":\"16\",\"data\":{\"fieldCount\":0,\"affectedRows\":1,\"insertId\":0,\"serverStatus\":2,\"warningCount\":0,\"message\":\"(Rows matched: 1  Changed: 1  Warnings: 0\",\"protocol41\":true,\"changedRows\":1}}"
+				}
+			]
+		},
+		{
+			"name": "Delete Resource",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:6660/resources/11?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6660",
+					"path": [
+						"resources",
+						"11"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Resource",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:6660/resources/11?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6660",
+							"path": [
+								"resources",
+								"11"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "180",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Aug 2018 05:55:59 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b4-18OhXS6WRgcJjEuHATsAQcvbYG8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"delete resources success\",\"id\":0,\"data\":{\"fieldCount\":0,\"affectedRows\":1,\"insertId\":0,\"serverStatus\":2,\"warningCount\":0,\"message\":\"\",\"protocol41\":true,\"changedRows\":0}}"
+				}
+			]
+		}
+	]
+}

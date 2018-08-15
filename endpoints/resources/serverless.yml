@@ -1,0 +1,65 @@
+service: bsa-resources-service
+
+# endpoints
+functions:
+  resourcesCreate:
+    handler: handler.resourcesCreate
+    events:
+      - http:
+          path: resources
+          method: post
+          cors: true
+  resourcesGet:
+    handler: handler.resourcesGet
+    events:
+      - http:
+          path: resources/{id}
+          method: get
+          cors: true
+  resourcesList:
+    handler: handler.resourcesList
+    events:
+      - http:
+          path: resources
+          method: get
+          cors: true
+  resourcesUpdate:
+    handler: handler.resourcesUpdate
+    events:
+      - http:
+          path: resources/{id}
+          method: put
+          cors: true
+  resourcesDelete:
+    handler: handler.resourcesDelete
+    events:
+      - http:
+          path: resources/{id}
+          method: delete
+          cors: true
+
+# config
+provider:
+  name: aws
+  runtime: ${file(./../../constants.yml):NODE_VERSION}
+  stage: ${file(./../../constants.yml):AWS_STAGE}
+  role: ${file(./../../serverless.env.yml):AWS_ROLE}
+  memorySize: ${file(./../../constants.yml):AWS_MEMORY}
+  timeout: ${file(./../../constants.yml):AWS_TIMEOUT}
+  apiGateway:
+    restApiId: ${file(./../../serverless.env.yml):AWS_API_ID}
+    restApiRootResourceId: ${file(./../../serverless.env.yml):AWS_API_ROOT_ID}
+  environment:
+    DB_HOST: ${file(./../../serverless.env.yml):DB_HOST}
+    DB_USER: ${file(./../../serverless.env.yml):DB_USER}
+    DB_PASS: ${file(./../../serverless.env.yml):DB_PASS}
+    DB_TABLE: ${file(./../../serverless.env.yml):DB_TABLE}
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+    packager: 'npm'
