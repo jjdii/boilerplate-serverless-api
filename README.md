@@ -21,6 +21,7 @@ cd boilerplate-serverless-api
 
 4) Run the setup script. It will ask for your AWS access keys.
 ```
+chmod 755 sls
 ./sls setup
 ```
 
