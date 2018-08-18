@@ -174,7 +174,6 @@ module.exports = {
 		const id = R.pathOr(null, ['pathParameters', 'id'], event)
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 
-		//console.log('debug:', debug)
 		if (debug) console.log('body', body)
 		if (debug) console.log('id', id)
 
