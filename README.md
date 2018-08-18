@@ -19,7 +19,7 @@ cd boilerplate-serverless-api
 
 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
 
-4) *If connecting to other AWS instances*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on your RDS security group.
+4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on your RDS security group.
 
 5) Run the setup script. It will ask for your AWS access keys.
 ```
@@ -32,7 +32,7 @@ cd boilerplate-serverless-api
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
 
 # VPC > Security Groups
-# (Only use VPC if connecting to other AWS instances)
+# Only use VPC if connecting to other AWS services
 VPC_SECURITY: sg-[XXXXXXXX]
 VPC_SUBNET1: subnet-[XXXXXXXX]
 VPC_SUBNET2: subnet-[XXXXXXXX]
@@ -40,8 +40,8 @@ VPC_SUBNET3: subnet-[XXXXXXXX]
 VPC_SUBNET4: subnet-[XXXXXXXX]
 
 # API Gateway > YOUR_API_NAME > Resources
-AWS_API_ID_PROD: [XXXXXXXXXX]
-AWS_API_ROOT_ID_PROD: [XXXXXXXXXX]
+AWS_API_ID_DEV: [XXXXXXXXXX]
+AWS_API_ROOT_ID_DEV: [XXXXXXXXXX]
 
 # MySQL Credentials
 DB_HOST: '[HOST_URL]'
@@ -59,9 +59,6 @@ VPC_SUBNET2: subnet-adh039dh
 VPC_SUBNET3: subnet-wdny3283
 VPC_SUBNET4: subnet-d7g87f7f
 
-AWS_API_ID_PROD: k8d00ri42d
-AWS_API_ROOT_ID_PROD: m26b5nsklk
-
 AWS_API_ID_DEV: wa9dh38h9r
 AWS_API_ROOT_ID_DEV: d73207gr7d
 
@@ -72,8 +69,8 @@ DB_NAME: 'test_db'
 ```
 Separate `AWS_API_ID` & `AWS_API_ROOT_ID` entries must be made for every stage you wish to deploy to:
 ```
-AWS_API_ID_DEV: wa9dh38h9r
-AWS_API_ROOT_ID_DEV: d73207gr7d
+AWS_API_ID_PROD: wa9dh38h9r
+AWS_API_ROOT_ID_PROD: d73207gr7d
 
 AWS_API_ID_STAGING: 17tr923tr7
 AWS_API_ROOT_ID_STAGING: dw20h3u38u
@@ -83,7 +80,7 @@ AWS_API_ROOT_ID_STAGING: dw20h3u38u
 
 7) Run the deploy script:
 ```
-./sls deploy all prod
+./sls deploy all dev
 ```
 
 8) Import `data/db.sql` into your MySQL database.
