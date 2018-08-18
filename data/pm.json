@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "de87c260-cfde-4788-a18c-3b08dd1edec3",
-		"name": "Boilerplate Express API",
+		"_postman_id": "174150a6-6b0b-42d8-94e9-d2120901cf36",
+		"name": "Boilerplate Serverless API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -20,13 +20,12 @@
 					"raw": "{\n\t\"name\": \"tester\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6660/resources?debug=true",
-					"protocol": "http",
+					"raw": "{{url}}/{{stage}}/resources?debug=true",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "6660",
 					"path": [
+						"{{stage}}",
 						"resources"
 					],
 					"query": [
@@ -45,8 +44,7 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -54,13 +52,12 @@
 							"raw": "{\n\t\"name\": \"tester\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:6660/resources?debug=true",
-							"protocol": "http",
+							"raw": "{{url}}/{{stage}}/resources?debug=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "6660",
 							"path": [
+								"{{stage}}",
 								"resources"
 							],
 							"query": [
@@ -127,13 +124,12 @@
 					"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6660/resources/16?debug=true",
-					"protocol": "http",
+					"raw": "{{url}}/{{stage}}/resources/16?debug=true",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "6660",
 					"path": [
+						"{{stage}}",
 						"resources",
 						"16"
 					],
@@ -156,13 +152,12 @@
 							"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:6660/resources/16?debug=true",
-							"protocol": "http",
+							"raw": "{{url}}/{{stage}}/resources/16?debug=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "6660",
 							"path": [
+								"{{stage}}",
 								"resources",
 								"16"
 							],
@@ -230,13 +225,12 @@
 					"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6660/resources?debug=true",
-					"protocol": "http",
+					"raw": "{{url}}/{{stage}}/resources?debug=true",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "6660",
 					"path": [
+						"{{stage}}",
 						"resources"
 					],
 					"query": [
@@ -258,13 +252,12 @@
 							"raw": "{\n\t\"name\": \"test\",\n\t\"description\": \"this is not a drill\",\n\t\"test\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:6660/resources?debug=true",
-							"protocol": "http",
+							"raw": "{{url}}/{{stage}}/resources?debug=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "6660",
 							"path": [
+								"{{stage}}",
 								"resources"
 							],
 							"query": [
@@ -336,15 +329,14 @@
 					"raw": "{\n\t\"name\": \"testy\",\n\t\"description\": \"this is actually a drill\",\n\t\"test\": true\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6660/resources/16?debug=true",
-					"protocol": "http",
+					"raw": "{{url}}/{{stage}}/resources/2?debug=true",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "6660",
 					"path": [
+						"{{stage}}",
 						"resources",
-						"16"
+						"2"
 					],
 					"query": [
 						{
@@ -362,9 +354,7 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -372,15 +362,14 @@
 							"raw": "{\n\t\"name\": \"testy\",\n\t\"description\": \"this is actually a drill\",\n\t\"test\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:6660/resources/16?debug=true",
-							"protocol": "http",
+							"raw": "{{url}}/{{stage}}/resources/2?debug=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "6660",
 							"path": [
+								"{{stage}}",
 								"resources",
-								"16"
+								"2"
 							],
 							"query": [
 								{
@@ -446,13 +435,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6660/resources/11?debug=true",
-					"protocol": "http",
+					"raw": "{{url}}/{{stage}}/resources/11?debug=true",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "6660",
 					"path": [
+						"{{stage}}",
 						"resources",
 						"11"
 					],
@@ -475,13 +463,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:6660/resources/11?debug=true",
-							"protocol": "http",
+							"raw": "{{url}}/{{stage}}/resources/11?debug=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "6660",
 							"path": [
+								"{{stage}}",
 								"resources",
 								"11"
 							],
