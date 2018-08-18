@@ -46,6 +46,14 @@ provider:
   role: ${file(./../../serverless.env.yml):AWS_ROLE}
   memorySize: ${file(./../../constants.yml):AWS_MEMORY}
   timeout: ${file(./../../constants.yml):AWS_TIMEOUT}
+  vpc:
+    securityGroupIds:
+      - ${file(./../../serverless.env.yml):VPC_SECURITY}
+    subnetIds:
+      - ${file(./../../serverless.env.yml):VPC_SUBNET1}
+      - ${file(./../../serverless.env.yml):VPC_SUBNET2}
+      - ${file(./../../serverless.env.yml):VPC_SUBNET3}
+      - ${file(./../../serverless.env.yml):VPC_SUBNET4}
   apiGateway:
     restApiId: ${file(./../../serverless.env.yml):AWS_API_ID_${self:custom.environments.${self:provider.stage}}}
     restApiRootResourceId: ${file(./../../serverless.env.yml):AWS_API_ROOT_ID_${self:custom.environments.${self:provider.stage}}}

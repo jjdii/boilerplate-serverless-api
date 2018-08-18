@@ -19,16 +19,25 @@ cd boilerplate-serverless-api
 
 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
 
-4) Run the setup script. It will ask for your AWS access keys.
+4) *If connecting to other AWS instances*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on your RDS security group.
+
+5) Run the setup script. It will ask for your AWS access keys.
 ```
-chmod 755 sls
 ./sls setup
 ```
 
-5) Create a new serverless.env.yml file:
+6) Create a new serverless.env.yml file:
 ```
 # IAM > Roles
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
+
+# VPC > Security Groups
+# (Only use VPC if connecting to other AWS instances)
+VPC_SECURITY: sg-[XXXXXXXX]
+VPC_SUBNET1: subnet-[XXXXXXXX]
+VPC_SUBNET2: subnet-[XXXXXXXX]
+VPC_SUBNET3: subnet-[XXXXXXXX]
+VPC_SUBNET4: subnet-[XXXXXXXX]
 
 # API Gateway > YOUR_API_NAME > Resources
 AWS_API_ID_PROD: [XXXXXXXXXX]
@@ -43,6 +52,12 @@ DB_NAME: '[DATABASE]'
 Example serverless.env.yml file:
 ```
 AWS_ROLE: arn:aws:iam::103938583682:role/aws_lambda_executor
+
+VPC_SECURITY: sg-89d8383a
+VPC_SUBNET1: subnet-ch8ce9wd
+VPC_SUBNET2: subnet-adh039dh
+VPC_SUBNET3: subnet-wdny3283
+VPC_SUBNET4: subnet-d7g87f7f
 
 AWS_API_ID_PROD: k8d00ri42d
 AWS_API_ROOT_ID_PROD: m26b5nsklk
@@ -66,14 +81,14 @@ AWS_API_ROOT_ID_STAGING: dw20h3u38u
 ...
 ```
 
-6) Run the deploy script:
+7) Run the deploy script:
 ```
 ./sls deploy all prod
 ```
 
-7) Import `data/db.sql` into your MySQL database.
+8) Import `data/db.sql` into your MySQL database.
 
-8) Import `data/pm.json` into Postman. Create a new environment and add `url` & `stage` variables. `url` is the endpoint supplied by the deploy script. `stage` was provided when running the deploy script and defaults to `dev` if omitted.
+9) Import `data/pm.json` into Postman. Create a new environment and add `url` & `stage` variables. `url` is the endpoint supplied by the deploy script. `stage` was provided when running the deploy script and defaults to `dev` if omitted.
 
 # Scripts Reference
 ```
