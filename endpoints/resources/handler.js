@@ -2,8 +2,8 @@
 
 const R = require('ramda')
 const { createConnection } = require('promise-mysql')
-const buildQuery = require('./lib/build-query')
-const buildResponse = require('./lib/build-response')
+const buildQuery = require('../../lib/build-query')
+const buildResponse = require('../../lib/build-response')
 
 const table = 'resources'
 const allowedFields = ['name', 'description']
@@ -14,8 +14,8 @@ module.exports = {
 	//////////////////
 	///// CREATE /////
 	resourcesCreate: (event, context, callback) => {
-		const cleanObject = require('./lib/clean-object')
-		const checkFields = require('./lib/check-fields')
+		const cleanObject = require('../../lib/clean-object')
+		const checkFields = require('../../lib/check-fields')
 
 		const body = R.propOr(null, 'body', event)
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
@@ -166,8 +166,8 @@ module.exports = {
 	//////////////////
 	///// UPDATE /////
 	resourcesUpdate: (event, context, callback) => {
-		const cleanObject = require('./lib/clean-object')
-		const checkFields = require('./lib/check-fields')
+		const cleanObject = require('../../lib/clean-object')
+		const checkFields = require('../../lib/check-fields')
 		
 		const body = R.propOr(null, 'body', event)
 		const id = R.pathOr(null, ['pathParameters', 'id'], event)
