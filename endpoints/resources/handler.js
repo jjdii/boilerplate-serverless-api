@@ -5,6 +5,10 @@ const { createConnection } = require('promise-mysql')
 const buildQuery = require('./lib/build-query')
 const buildResponse = require('./lib/build-response')
 
+const table = 'resources'
+const allowedFields = ['name', 'description']
+const requiredFields = ['name']
+
 module.exports = {
 
 	//////////////////
@@ -90,7 +94,7 @@ module.exports = {
 		}).then(conn => {
 			// QUERY
 			connection = conn
-			var query = buildQuery.get(table, ['id', 'name', 'description', 'created'], {id: id})
+			var query = buildQuery.get(table, ['*'], {id: id})
 			if (debug) console.log('query', query)
 
 			return connection.query(query, [id])
@@ -131,7 +135,7 @@ module.exports = {
 		}).then(conn => {
 			// QUERY
 			connection = conn
-			var query = buildQuery.list(table, ['id', 'name', 'description', 'created'])
+			var query = buildQuery.list(table, ['*'])
 			if (debug) console.log('query', query)
 
 			return connection.query(query)
