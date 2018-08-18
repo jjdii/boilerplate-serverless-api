@@ -2,6 +2,12 @@
 
 const R = require('ramda')
 const { createConnection } = require('promise-mysql')
+const mysqlConnection = {
+	host: process.env.DB_HOST, 
+	user: process.env.DB_USER, 
+	password: process.env.DB_PASS, 
+	database: process.env.DB_NAME 
+}
 const buildQuery = require('../../lib/build-query')
 const buildResponse = require('../../lib/build-response')
 
@@ -46,9 +52,7 @@ module.exports = {
 
 		// OPEN DB CONNECTION
 		var connection
-		createConnection({
-			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME 
-		}).then(conn => {
+		createConnection(mysqlConnection).then(conn => {
 			// QUERY
 			connection = conn
 			var query = buildQuery.insert(table, cleanBody)
@@ -87,12 +91,10 @@ module.exports = {
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 
 		if (debug) console.log('id', id)
-		
+
 		// OPEN DB CONNECTION
 		var connection
-		createConnection({
-			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME 
-		}).then(conn => {
+		createConnection(mysqlConnection).then(conn => {
 			// QUERY
 			connection = conn
 			var query = buildQuery.get(table, ['*'], {id: id})
@@ -131,9 +133,7 @@ module.exports = {
 
 		// OPEN DB CONNECTION
 		var connection
-		createConnection({
-			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME
-		}).then(conn => {
+		createConnection(mysqlConnection).then(conn => {
 			// QUERY
 			connection = conn
 			var query = buildQuery.list(table, ['*'])
@@ -195,9 +195,7 @@ module.exports = {
 
 		// OPEN DB CONNECTION
 		var connection
-		createConnection({
-			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME
-		}).then(conn => {
+		createConnection(mysqlConnection).then(conn => {
 			// QUERY
 			connection = conn
 			var query = buildQuery.update(table, cleanBody, {id: id})
@@ -240,9 +238,7 @@ module.exports = {
 
 		// OPEN DB CONNECTION
 		var connection
-		createConnection({
-			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME 
-		}).then(conn => {
+		createConnection(mysqlConnection).then(conn => {
 			// QUERY
 			connection = conn
 			var query = buildQuery.delete(table, {id: id})
