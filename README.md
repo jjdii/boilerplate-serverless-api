@@ -30,8 +30,8 @@ cd boilerplate-serverless-api
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
 
 # API Gateway > YOUR_API_NAME > Resources
-AWS_API_ID: [XXXXXXXXXX]
-AWS_API_ROOT_ID: [XXXXXXXXXX]
+AWS_API_ID_PROD: [XXXXXXXXXX]
+AWS_API_ROOT_ID_PROD: [XXXXXXXXXX]
 
 # MySQL Credentials
 DB_HOST: '[HOST_URL]'
@@ -43,35 +43,48 @@ Example serverless.env.yml file:
 ```
 AWS_ROLE: arn:aws:iam::103938583682:role/aws_lambda_executor
 
-AWS_API_ID: k8d00ri42d
-AWS_API_ROOT_ID: m26b5nsklk
+AWS_API_ID_PROD: k8d00ri42d
+AWS_API_ROOT_ID_PROD: m26b5nsklk
+
+AWS_API_ID_DEV: wa9dh38h9r
+AWS_API_ROOT_ID_DEV: d73207gr7d
 
 DB_HOST: 'test-cluster-1.cluster-jdiruvhtnnk.us-east-1.rds.amazonaws.com'
 DB_USER: 'admin'
 DB_PASS: '1234'
-DB_TABLE: 'test_db'
+DB_NAME: 'test_db'
+```
+Separate `AWS_API_ID` & `AWS_API_ROOT_ID` entries must be made for every stage you wish to deploy to:
+```
+AWS_API_ID_DEV: wa9dh38h9r
+AWS_API_ROOT_ID_DEV: d73207gr7d
+
+AWS_API_ID_STAGING: 17tr923tr7
+AWS_API_ROOT_ID_STAGING: dw20h3u38u
+
+...
 ```
 
 6) Run the deploy script:
 ```
-./sls deploy all
+./sls deploy all prod
 ```
 
 7) Import `data/db.sql` into your MySQL database.
 
-8) Import `data/pm.json` into Postman and update the endpoint URLs with those returned by the deploy script.
+8) Import `data/pm.json` into Postman. Create a new environment and add `url` & `stage` variables. `url` is the endpoint supplied by the deploy script. `stage` was provided when running the deploy script and defaults to `dev` if omitted.
 
 # Scripts Reference
 ```
 ./sls setup
 ```
 ```
-./sls deploy all
-./sls deploy [ENDPOINT_NAME]
+./sls deploy all [STAGE(optional)]
+./sls deploy [ENDPOINT_NAME] [STAGE(optional)]
 ```
 ```
-./sls remove all
-./sls remove [ENDPOINT_NAME]
+./sls remove all [STAGE(optional)]
+./sls remove [ENDPOINT_NAME] [STAGE(optional)]
 ```
 ```
 ./sls npm install all
