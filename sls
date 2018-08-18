@@ -18,7 +18,7 @@ case $1 in
     cd ..
 
     echo "Setup done"
-    ;;
+  ;;
 
   deploy)
     if [[ $2 == "all" ]]; then
@@ -66,7 +66,7 @@ case $1 in
     else
       echo "Not a valid 'deploy' action. Options: [all, (endpoint_name)]"
     fi
-    ;;
+  ;;
 
   remove)
     if [[ $2 == "all" ]]; then
@@ -110,7 +110,7 @@ case $1 in
     else
       echo "Not a valid 'remove' action. Options: [all, (endpoint_name)]"
     fi
-    ;;
+  ;;
 
   npm)
     if [[ $2 == "install" ]]; then
@@ -195,10 +195,10 @@ case $1 in
     else
       echo "Not a valid 'npm' action. Options: [install, addto, remove]"
     fi
-    ;;
+  ;;
 
   *)
     echo "Not a valid action. Options: [setup, npm, test, deploy, remove]"
-    ;;
+  ;;
 
 esac
