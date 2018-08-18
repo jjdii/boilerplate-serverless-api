@@ -1,7 +1,5 @@
 #bash/bin
 
-availabledirs=`ls -d endpoints/*/`
-
 case $1 in
 
   setup)
@@ -24,24 +22,47 @@ case $1 in
 
   deploy)
     if [[ $2 == "all" ]]; then
-      cd endpoints
-      dirs=`ls -d */`
-      for dir in $dirs; do
-      cd $dir
-      sls deploy
-      cd ..
-      done
-      cd ..
+      if [[ -n "$3" ]]; then
+        cd endpoints
+        dirs=`ls -d */`
+        for dir in $dirs; do
+        cd $dir
+        sls deploy --stage $3
+        cd ..
+        done
+        cd ..
 
-      echo "Successfully deployed all endpoints ["$dirs"]"
-      echo -en "\007"
+        echo "Successfully deployed all endpoints ["$dirs"]"
+        echo -en "\007"
+      else
+        cd endpoints
+        dirs=`ls -d */`
+        for dir in $dirs; do
+        cd $dir
+        sls deploy
+        cd ..
+        done
+        cd ..
+
+        echo "Successfully deployed all endpoints ["$dirs"]"
+        echo -en "\007"
+      fi
     elif [[ -n "$2" ]]; then
-      cd endpoints/$2
-      sls deploy
-      cd ../..
+      if [[ -n "$3" ]]; then
+        cd endpoints/$2
+        sls deploy --stage $3
+        cd ../..
 
-      echo "Successfully deployed "$2" endpoint"
-      echo -en "\007"
+        echo "Successfully deployed "$2" endpoint"
+        echo -en "\007"
+      else
+        cd endpoints/$2
+        sls deploy
+        cd ../..
+
+        echo "Successfully deployed "$2" endpoint"
+        echo -en "\007"
+      fi
     else
       echo "Not a valid 'deploy' action. Options: [all, (endpoint_name)]"
     fi
@@ -49,22 +70,43 @@ case $1 in
 
   remove)
     if [[ $2 == "all" ]]; then
-      cd endpoints
-      dirs=`ls -d */`
-      for dir in $dirs; do
-      cd $dir
-      sls remove
-      cd ..
-      done
-      cd ..
+      if [[ -n "$3" ]]; then
+        cd endpoints
+        dirs=`ls -d */`
+        for dir in $dirs; do
+        cd $dir
+        sls remove --stage $3
+        cd ..
+        done
+        cd ..
 
-      echo "Successfully removed all endpoints ["$dirs"]"
+        echo "Successfully removed all endpoints ["$dirs"]"
+      else
+        cd endpoints
+        dirs=`ls -d */`
+        for dir in $dirs; do
+        cd $dir
+        sls remove
+        cd ..
+        done
+        cd ..
+
+        echo "Successfully removed all endpoints ["$dirs"]"
+      fi
     elif [[ -n "$2" ]]; then
-      cd endpoints/$2
-      sls remove
-      cd ../..
+      if [[ -n "$3" ]]; then
+        cd endpoints/$2
+        sls remove --stage $3
+        cd ../..
 
-      echo "Successfully removed "$2" endpoint"
+        echo "Successfully removed "$2" endpoint"
+      else
+        cd endpoints/$2
+        sls remove
+        cd ../..
+
+        echo "Successfully removed "$2" endpoint"
+      fi
     else
       echo "Not a valid 'remove' action. Options: [all, (endpoint_name)]"
     fi
