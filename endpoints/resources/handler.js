@@ -87,51 +87,41 @@ module.exports = {
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 
 		if (debug) console.log('id', id)
+		
+		// OPEN DB CONNECTION
+		var connection
+		createConnection({
+			host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME 
+		}).then(conn => {
+			// QUERY
+			connection = conn
+			var query = buildQuery.get(table, ['*'], {id: id})
+			if (debug) console.log('query', query)
 
-		try {
-			// OPEN DB CONNECTION
-			var connection
-			createConnection({
-				host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME 
-			}).then(conn => {
-				// QUERY
-				connection = conn
-				var query = buildQuery.get(table, ['*'], {id: id})
-				if (debug) console.log('query', query)
+			return connection.query(query, [id])
 
-				return connection.query(query, [id])
+		}).then(result => {
+			// QUERY RESPONSE
+			connection.end()
+			if (debug) console.log('result', result)
 
-			}).then(result => {
-				// QUERY RESPONSE
-				connection.end()
-				if (debug) console.log('result', result)
-
-				return callback(null, buildResponse(200, {
-					message: `get ${table} success`,
-					id: id,
-					data: (result.isArray && result.length > 1) ? result : R.propOr(null, 0, result)
-				}))
-			
-			}).catch(error => {
-				// QUERY ERROR
-				if (connection && connection.end) connection.end()
-				if (debug) console.log('error', error)
-
-				return callback(error, buildResponse(500, {
-					message: 'query error',
-					error: error
-				}))
-
-			}) 
-		} catch (e) {
+			return callback(null, buildResponse(200, {
+				message: `get ${table} success`,
+				id: id,
+				data: (result.isArray && result.length > 1) ? result : R.propOr(null, 0, result)
+			}))
+		
+		}).catch(error => {
+			// QUERY ERROR
 			if (connection && connection.end) connection.end()
-			if (debug) console.log('error', e)
+			if (debug) console.log('error', error)
 
 			return callback(error, buildResponse(500, {
-				message: 'mysql error',
-				error: e
+				message: 'query error',
+				error: error
 			}))
-		}
+
+		})
 	},
 
 	////////////////
