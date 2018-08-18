@@ -27,7 +27,7 @@ case $1 in
         dirs=`ls -d */`
         for dir in $dirs; do
         cd $dir
-        sls deploy --stage $3
+        sls deploy -v --stage $3
         cd ..
         done
         cd ..
@@ -39,7 +39,7 @@ case $1 in
         dirs=`ls -d */`
         for dir in $dirs; do
         cd $dir
-        sls deploy
+        sls deploy -v
         cd ..
         done
         cd ..
@@ -50,14 +50,14 @@ case $1 in
     elif [[ -n "$2" ]]; then
       if [[ -n "$3" ]]; then
         cd endpoints/$2
-        sls deploy --stage $3
+        sls deploy -v --stage $3
         cd ../..
 
         echo "Successfully deployed "$2" endpoint"
         echo -en "\007"
       else
         cd endpoints/$2
-        sls deploy
+        sls deploy -v
         cd ../..
 
         echo "Successfully deployed "$2" endpoint"
