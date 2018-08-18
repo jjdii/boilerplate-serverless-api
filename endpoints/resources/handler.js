@@ -29,7 +29,8 @@ module.exports = {
 			}))
 
 		// STRIP EMPTY VALUES
-		var cleanBody = cleanObject(body)
+		var cleanBody = cleanObject(JSON.parse(body))
+		if (debug) console.log('cleanBody', cleanBody)
 
 		// STRIP UNALLOWED FIELDS
 		const unallowedFields = checkFields.unallowed(allowedFields, cleanBody)
@@ -194,7 +195,8 @@ module.exports = {
 			}))
 
 		// STRIP EMPTY VALUES
-		var cleanBody = cleanObject(body)
+		var cleanBody = cleanObject(JSON.parse(body))
+		if (debug) console.log('cleanBody', cleanBody)
 
 		// STRIP UNALLOWED FIELDS
 		const unallowedFields = checkFields.unallowed(allowedFields, cleanBody)
