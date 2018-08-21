@@ -7,6 +7,10 @@ Basic node serverless REST API project with MySQL integration for when you need 
 ```
 npm install -g serverless
 ```
+- [Amazon Web Services CLI](https://aws.amazon.com/cli/) 1.15.4+
+```
+brew install awscli
+```
 
 # Getting Started
 1) Clone the boilerplate-serverless-api repository:
@@ -19,20 +23,29 @@ cd boilerplate-serverless-api
 
 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
 
-4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on your RDS security group.
+4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to (RDS, S3, EC2, etc).
 
-5) Run the setup script. It will ask for your AWS access keys.
+5) Run the setup script to establish your environment. It will ask for your access keys from step 3.
 ```
 ./sls setup
 ```
 
-6) Create a new serverless.env.yml file:
+6) Open the constants.yml file and make changes where necessary:
+```
+NAME: bsa
+NODE_VERSION: nodejs8.10
+AWS_MEMORY: 1536
+AWS_TIMEOUT: 10
+AWS_WARMUP_RATE: rate(4 minutes)
+```
+
+7) Create a new serverless.env.yml file:
 ```
 # IAM > Roles
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
 
 # VPC > Security Groups
-# Only use VPC if connecting to other AWS services
+# Only use VPC if connecting to other AWS services (RDS, S3, EC2, etc)
 VPC_SECURITY: sg-[XXXXXXXX]
 VPC_SUBNET1: subnet-[XXXXXXXX]
 VPC_SUBNET2: subnet-[XXXXXXXX]
@@ -78,14 +91,16 @@ AWS_API_ROOT_ID_STAGING: dw20h3u38u
 ...
 ```
 
-7) Run the deploy script:
+8) Run the deploy script:
 ```
 ./sls deploy all dev
 ```
 
-8) Import `data/db.sql` into your MySQL database.
+9) Import `data/db.sql` into your MySQL database.
 
-9) Import `data/pm.json` into Postman. Create a new environment and add `url` & `stage` variables. `url` is the endpoint supplied by the deploy script. `stage` was provided when running the deploy script and defaults to `dev` if omitted.
+10) Import `data/pm.json` into Postman. Create a new set of environment variables and add `url` & `stage` variables. 
+- `url` is the endpoint supplied by the deploy script. 
+- `stage` was provided when running the deploy script and defaults to `dev` if omitted.
 
 # Scripts Reference
 ```
