@@ -7,7 +7,7 @@ Basic node serverless REST API project with MySQL integration for when you need 
 ```
 npm install -g serverless
 ```
-- [Amazon Web Services CLI](https://aws.amazon.com/cli/) 1.15.4+
+- [AWS CLI](https://aws.amazon.com/cli/) 1.15.4+
 ```
 brew install awscli
 ```
@@ -30,7 +30,13 @@ cd boilerplate-serverless-api
 ./sls setup
 ```
 
-6) Open the constants.yml file and make changes where necessary:
+6) Open the constants.yml file and make changes where necessary.
+- `NODE_VERSION`: Only certain node versions may be used. Check the AWS Lambda dashboard for more info.
+- `AWS_MEMORY`: Memory to allocate to your lambdas during runtime. 1536 is the supposed optimal choice.
+- `AWS_TIMEOUT`: Max lambda timeout in seconds.
+- `AWS_WARMUP_RATE`: Rate for lambda warmers. 4 minutes seems to be optimal.
+
+Example constants.yml file:
 ```
 NAME: bsa
 NODE_VERSION: nodejs8.10
@@ -99,8 +105,8 @@ AWS_API_ROOT_ID_STAGING: dw20h3u38u
 9) Import `data/db.sql` into your MySQL database.
 
 10) Import `data/pm.json` into Postman. Create a new set of environment variables and add `url` & `stage` variables. 
-- `url` is the endpoint supplied by the deploy script. 
-- `stage` was provided when running the deploy script and defaults to `dev` if omitted.
+- `url` is the base url of the endpoint supplied by the deploy script. Example: `https://109ddhihdi.execute-api.us-east-1.amazonaws.com`
+- `stage` was provided when running the deploy script. Defaults to `dev` if omitted.
 
 # Scripts Reference
 ```
