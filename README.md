@@ -25,7 +25,7 @@ cd boilerplate-serverless-api
 
 4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to (RDS, S3, EC2, etc).
 
-5) Run the setup script to establish your environment. It will ask for your access keys from step 3.
+5) Run the setup script to establish your environment. It will ask for your access keys.
 ```
 ./sls setup
 ```
