@@ -3,10 +3,7 @@
 case $1 in
 
   setup)
-    read -p "AWS_ACCESS_KEY: " accessKey
-    read -p "AWS_SECRET_ACCESS_KEY: " secretKey
-    export AWS_ACCESS_KEY_ID=$accessKey
-    export AWS_SECRET_ACCESS_KEY=#secretKey
+    aws configure
 
     cd endpoints
     dirs=`ls -d */`
