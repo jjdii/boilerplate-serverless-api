@@ -9,6 +9,12 @@ functions:
           path: resources
           method: post
           cors: true
+      - schedule:
+          name: ${file(./../../constants.yml):NAME}-resourcesCreate-${opt:stage, 'dev'}
+          rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
+          enabled: true
+          input:
+            warmup: true
   resourcesGet:
     handler: handler.resourcesGet
     events:
@@ -16,6 +22,12 @@ functions:
           path: resources/{id}
           method: get
           cors: true
+      - schedule:
+          name: ${file(./../../constants.yml):NAME}-resourcesGet-${opt:stage, 'dev'}
+          rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
+          enabled: true
+          input:
+            warmup: true
   resourcesList:
     handler: handler.resourcesList
     events:
@@ -23,6 +35,12 @@ functions:
           path: resources
           method: get
           cors: true
+      - schedule:
+          name: ${file(./../../constants.yml):NAME}-resourcesList-${opt:stage, 'dev'}
+          rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
+          enabled: true
+          input:
+            warmup: true
   resourcesUpdate:
     handler: handler.resourcesUpdate
     events:
@@ -30,6 +48,12 @@ functions:
           path: resources/{id}
           method: put
           cors: true
+      - schedule:
+          name: ${file(./../../constants.yml):NAME}-resourcesUpdate-${opt:stage, 'dev'}
+          rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
+          enabled: true
+          input:
+            warmup: true
   resourcesDelete:
     handler: handler.resourcesDelete
     events:
@@ -37,6 +61,12 @@ functions:
           path: resources/{id}
           method: delete
           cors: true
+      - schedule:
+          name: ${file(./../../constants.yml):NAME}-resourcesDelete-${opt:stage, 'dev'}
+          rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
+          enabled: true
+          input:
+            warmup: true
 
 # config
 provider:
