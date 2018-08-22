@@ -15,6 +15,7 @@ case $1 in
     cd ..
 
     echo "Setup done"
+    echo -en "\007"
   ;;
 
   deploy)
@@ -36,7 +37,7 @@ case $1 in
         dirs=`ls -d */`
         for dir in $dirs; do
         cd $dir
-        sls deploy -v
+        sls deploy -v --stage dev
         cd ..
         done
         cd ..
@@ -54,7 +55,7 @@ case $1 in
         echo -en "\007"
       else
         cd endpoints/$2
-        sls deploy -v
+        sls deploy -v --stage dev
         cd ../..
 
         echo "Successfully deployed "$2" endpoint"
@@ -83,7 +84,7 @@ case $1 in
         dirs=`ls -d */`
         for dir in $dirs; do
         cd $dir
-        sls remove
+        sls remove --stage dev
         cd ..
         done
         cd ..
@@ -99,7 +100,7 @@ case $1 in
         echo "Successfully removed "$2" endpoint"
       else
         cd endpoints/$2
-        sls remove
+        sls remove --stage dev
         cd ../..
 
         echo "Successfully removed "$2" endpoint"
