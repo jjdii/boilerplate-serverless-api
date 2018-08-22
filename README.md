@@ -13,24 +13,24 @@ brew install awscli
 ```
 
 # Getting Started
-### 1) Clone the boilerplate-serverless-api repository:
+#### 1) Clone the boilerplate-serverless-api repository:
 ```
 git clone https://github.com/jjdii/boilerplate-serverless-api.git
 cd boilerplate-serverless-api
 ```
 
-### 2) Create a new API in the AWS API Gateway.
+#### 2) Create a new API in the AWS API Gateway.
 
-### 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
+#### 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
 
-### 4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to: RDS, S3, EC2, etc.
+#### 4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to: RDS, S3, EC2, etc.
 
-### 5) Run the setup script to establish your environment. It will ask for your access keys.
+#### 5) Run the setup script to establish your environment. It will ask for your access keys.
 ```
 ./sls setup
 ```
 
-### 6) Open the constants.yml file and make changes where necessary.
+#### 6) Open the constants.yml file and make changes where necessary.
 - `NAME`: Short name for your application.
 - `NODE_VERSION`: Only certain node versions may be used. Check the AWS Lambda dashboard for more info.
 - `AWS_MEMORY`: Memory to allocate to your lambdas during runtime. 1536 is the supposed optimal choice.
@@ -48,7 +48,7 @@ AWS_WARMUP: true
 AWS_WARMUP_RATE: rate(4 minutes)
 ```
 
-### 7) Create a new serverless.env.yml file:
+#### 7) Create a new serverless.env.yml file:
 ```
 # IAM > Roles
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
@@ -100,14 +100,14 @@ AWS_API_ROOT_ID_STAGING: dw20h3u38u
 ...
 ```
 
-### 8) Run the deploy script:
+#### 8) Run the deploy script:
 ```
 ./sls deploy all dev
 ```
 
-### 9) Import `data/db.sql` into your MySQL database.
+#### 9) Import `data/db.sql` into your MySQL database.
 
-### 10) Import `data/pm.json` into Postman. Create a new set of environment variables and add `url` & `stage` variables. 
+#### 10) Import `data/pm.json` into Postman. Create a new set of environment variables and add `url` & `stage` variables. 
 - `url` is the base url of the endpoint supplied by the deploy script. Example: `https://109ddhihdi.execute-api.us-east-1.amazonaws.com`
 - `stage` was provided when running the deploy script. Defaults to `dev` if omitted.
 
