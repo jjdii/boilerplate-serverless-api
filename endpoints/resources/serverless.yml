@@ -12,7 +12,7 @@ functions:
       - schedule:
           name: ${file(./../../constants.yml):NAME}-resourcesCreate-${opt:stage, 'dev'}
           rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
-          enabled: true
+          enabled: ${file(./../../constants.yml):AWS_WARMUP}
           input:
             warmup: true
   resourcesGet:
@@ -25,7 +25,7 @@ functions:
       - schedule:
           name: ${file(./../../constants.yml):NAME}-resourcesGet-${opt:stage, 'dev'}
           rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
-          enabled: true
+          enabled: ${file(./../../constants.yml):AWS_WARMUP}
           input:
             warmup: true
   resourcesList:
@@ -38,7 +38,7 @@ functions:
       - schedule:
           name: ${file(./../../constants.yml):NAME}-resourcesList-${opt:stage, 'dev'}
           rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
-          enabled: true
+          enabled: ${file(./../../constants.yml):AWS_WARMUP}
           input:
             warmup: true
   resourcesUpdate:
@@ -51,7 +51,7 @@ functions:
       - schedule:
           name: ${file(./../../constants.yml):NAME}-resourcesUpdate-${opt:stage, 'dev'}
           rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
-          enabled: true
+          enabled: ${file(./../../constants.yml):AWS_WARMUP}
           input:
             warmup: true
   resourcesDelete:
@@ -64,7 +64,7 @@ functions:
       - schedule:
           name: ${file(./../../constants.yml):NAME}-resourcesDelete-${opt:stage, 'dev'}
           rate: ${file(./../../constants.yml):AWS_WARMUP_RATE}
-          enabled: true
+          enabled: ${file(./../../constants.yml):AWS_WARMUP}
           input:
             warmup: true
 

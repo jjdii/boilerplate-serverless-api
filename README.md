@@ -34,6 +34,7 @@ cd boilerplate-serverless-api
 - `NODE_VERSION`: Only certain node versions may be used. Check the AWS Lambda dashboard for more info.
 - `AWS_MEMORY`: Memory to allocate to your lambdas during runtime. 1536 is the supposed optimal choice.
 - `AWS_TIMEOUT`: Max lambda timeout in seconds.
+- `AWS_WARMUP`: Enable periodic invocation of your functions with AWS Cloudwatch Events to prevent cold starts.
 - `AWS_WARMUP_RATE`: Rate for lambda warmers. 4 minutes seems to be optimal.
 
 Example constants.yml file:
@@ -42,6 +43,7 @@ NAME: bsa
 NODE_VERSION: nodejs8.10
 AWS_MEMORY: 1536
 AWS_TIMEOUT: 10
+AWS_WARMUP: true
 AWS_WARMUP_RATE: rate(4 minutes)
 ```
 
