@@ -23,7 +23,7 @@ cd boilerplate-serverless-api
 
 3) Create a new user in AWS IAM with `AdministratorAccess`. Save the access keys provided.
 
-4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to (RDS, S3, EC2, etc).
+4) *If connecting to other AWS services*: Create a new security group for your Lambda functions. Attach this group as an inbound rule on the security groups of any other services you'd like to connect to: RDS, S3, EC2, etc.
 
 5) Run the setup script to establish your environment. It will ask for your access keys.
 ```
@@ -31,6 +31,7 @@ cd boilerplate-serverless-api
 ```
 
 6) Open the constants.yml file and make changes where necessary.
+- `NAME`: Short name for your application.
 - `NODE_VERSION`: Only certain node versions may be used. Check the AWS Lambda dashboard for more info.
 - `AWS_MEMORY`: Memory to allocate to your lambdas during runtime. 1536 is the supposed optimal choice.
 - `AWS_TIMEOUT`: Max lambda timeout in seconds.
@@ -53,7 +54,7 @@ AWS_WARMUP_RATE: rate(4 minutes)
 AWS_ROLE: arn:aws:iam::[AWS_IAM_ID]:role/[ROLE_NAME]
 
 # VPC > Security Groups
-# Only use VPC if connecting to other AWS services (RDS, S3, EC2, etc)
+# Use VPC if connecting to other AWS services (RDS, S3, EC2, etc.)
 VPC_SECURITY: sg-[XXXXXXXX]
 VPC_SUBNET1: subnet-[XXXXXXXX]
 VPC_SUBNET2: subnet-[XXXXXXXX]
