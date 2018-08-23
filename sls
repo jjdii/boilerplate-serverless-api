@@ -196,7 +196,7 @@ case $1 in
   ;;
 
   *)
-    echo "Not a valid action. Options: [setup, npm, test, deploy, remove]"
+    echo "Not a valid action. Options: [setup, npm, deploy, remove]"
   ;;
 
 esac
