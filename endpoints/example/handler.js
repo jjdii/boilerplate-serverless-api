@@ -11,7 +11,7 @@ const mysqlConnection = {
 const buildQuery = require('../../lib/build-query')
 const buildResponse = require('../../lib/build-response')
 
-const table = 'resources'
+const table = 'example'
 const allowedFields = ['name', 'description']
 const requiredFields = ['name']
 
@@ -19,7 +19,7 @@ module.exports = {
 
 	//////////////////
 	///// CREATE /////
-	resourcesCreate: (event, context, callback) => {
+	exampleCreate: (event, context, callback) => {
 		const cleanObject = require('../../lib/clean-object')
 		const checkFields = require('../../lib/check-fields')
 
@@ -86,7 +86,7 @@ module.exports = {
 
 	///////////////
 	///// GET /////
-	resourcesGet: (event, context, callback) => {
+	exampleGet: (event, context, callback) => {
 		const id = R.pathOr(null, ['pathParameters', 'id'], event)
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 
@@ -128,7 +128,7 @@ module.exports = {
 
 	////////////////
 	///// LIST /////
-	resourcesList: (event, context, callback) => {
+	exampleList: (event, context, callback) => {
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 
 		// OPEN DB CONNECTION
@@ -166,7 +166,7 @@ module.exports = {
 
 	//////////////////
 	///// UPDATE /////
-	resourcesUpdate: (event, context, callback) => {
+	exampleUpdate: (event, context, callback) => {
 		const cleanObject = require('../../lib/clean-object')
 		const checkFields = require('../../lib/check-fields')
 		
@@ -228,7 +228,7 @@ module.exports = {
 
 	//////////////////
 	///// DELETE /////
-	resourcesDelete: (event, context, callback) => {
+	exampleDelete: (event, context, callback) => {
 		const id = R.pathOr(null, ['pathParameters', 'id'], event)
 		const debug = R.pathOr(null, ['queryStringParameters', 'debug'], event) == 'true'
 

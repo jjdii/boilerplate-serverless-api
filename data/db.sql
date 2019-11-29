@@ -1,4 +1,4 @@
-CREATE TABLE `resources` (
+CREATE TABLE `example` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
